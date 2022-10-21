@@ -1,16 +1,24 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "outDir": "./dist/",
+      "sourceMap": true,
+      "noImplicitAny": false,
+      "stripInternal": true,
+      "noImplicitReturns": false,
+      "noUnusedLocals": false,
+      "types": [],
+
+    "target": "es2017",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": false,
+    "alwaysStrict": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
