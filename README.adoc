@@ -1,0 +1,31 @@
+= PoC with Pyodide/react/PWA/file watcher
+
+The PoC considers Pyodide embedded in a React PWA application for file watching (reacting on file changes).
+
+Status:
+
+* file watch is working
+* cache is not working
+
+The component with all the logic is `DirectoryWatcher.jsx` in `src/components`.
+The code is rough...
+
+== Starting the project
+
+[source,bash,attributes]
+----
+npm install
+npm start
+----
+
+Then, select a directory to watch (watches also sub-directories) clicking on `watch over directory`.
+Two access request will pop, one for reading, one for writing.
+Then, the project will check every 10s if there is new/modified/deleted files, and will apply a dumb AST trnansformation on all Python's file that have been added/modified since the last time it checked (so since 10s).
+
+== Alternative solution
+
+Another solution could be to create a `FileHandleWatcher` class that would wrap a `FileHandle` with each having its own timer to check if the file is modified.
+On modification, they could call a method (observer like pattern).
+This solution would work great for files modifications, but wouldn't for file deletion.
+To have deletion, we should pass by other mecanism, making the API a little bit less unified.
+
